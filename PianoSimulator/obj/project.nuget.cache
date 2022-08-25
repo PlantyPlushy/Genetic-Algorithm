@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "IUVDncrjgbO+FVEIgbcDZ0LPUYL4HyOx46OJi0LakQraEgqQiBwIW4cdSeRUXxBOQdxfFz+tbmU+chS3XFebZg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Kelsey\\Documents\\Semester5\\Programming\\Assignment1\\PianoSimulator\\PianoSimulator.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Kelsey\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Kelsey\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
