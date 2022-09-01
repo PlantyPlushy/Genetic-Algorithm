@@ -16,7 +16,7 @@ namespace PianoSimulator
             _frontOfArr = 0;
         }
 
-        public double this[int index] => (_frontOfArr + index) % _array.Length;
+        public double this[int index] => _array[(_frontOfArr + index) % _array.Length];
 
         public int Length => _array.Length;
 
@@ -26,6 +26,7 @@ namespace PianoSimulator
             {
                 throw new IndexOutOfRangeException("Array lengths do not match");
             }
+            
             for (int i = 0; i < _array.Length; i++)
             {
                 _array[i] = array[i];
@@ -34,7 +35,16 @@ namespace PianoSimulator
 
         public double Shift(double value)
         {
-            throw new NotImplementedException();
+            double removed = _array[_frontOfArr];
+            _array[_frontOfArr] = value;
+            if (_frontOfArr == _array.Length - 1)
+            {
+                _frontOfArr = 0;
+            } else
+            {
+                _frontOfArr++;
+            }
+            return removed;
         }
     }
 }

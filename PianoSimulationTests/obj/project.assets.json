@@ -1634,6 +1634,16 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
+      },
+      "PianoSimulator/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/PianoSimulator.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PianoSimulator.dll": {}
+        }
       }
     }
   },
@@ -5705,6 +5715,11 @@
         "system.xml.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xdocument.nuspec"
       ]
+    },
+    "PianoSimulator/1.0.0": {
+      "type": "project",
+      "path": "../PianoSimulator/PianoSimulator.csproj",
+      "msbuildProject": "../PianoSimulator/PianoSimulator.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -5712,6 +5727,7 @@
       "MSTest.TestAdapter >= 2.1.0",
       "MSTest.TestFramework >= 2.1.0",
       "Microsoft.NET.Test.Sdk >= 16.5.0",
+      "PianoSimulator >= 1.0.0",
       "coverlet.collector >= 1.2.0"
     ]
   },
@@ -5721,11 +5737,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Kelsey\\Documents\\Semester5\\Programming\\Assignment1\\PianoSimulationTests\\PianoSimulationTests\\PianoSimulationTests.csproj",
+      "projectUniqueName": "C:\\Users\\Kelsey\\Documents\\Semester5\\Programming\\Assignment1\\PianoSimulationTests\\PianoSimulationTests.csproj",
       "projectName": "PianoSimulationTests",
-      "projectPath": "C:\\Users\\Kelsey\\Documents\\Semester5\\Programming\\Assignment1\\PianoSimulationTests\\PianoSimulationTests\\PianoSimulationTests.csproj",
+      "projectPath": "C:\\Users\\Kelsey\\Documents\\Semester5\\Programming\\Assignment1\\PianoSimulationTests\\PianoSimulationTests.csproj",
       "packagesPath": "C:\\Users\\Kelsey\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Kelsey\\Documents\\Semester5\\Programming\\Assignment1\\PianoSimulationTests\\PianoSimulationTests\\obj\\",
+      "outputPath": "C:\\Users\\Kelsey\\Documents\\Semester5\\Programming\\Assignment1\\PianoSimulationTests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Kelsey\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -5738,7 +5754,11 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Kelsey\\Documents\\Semester5\\Programming\\Assignment1\\PianoSimulator\\PianoSimulator.csproj": {
+              "projectPath": "C:\\Users\\Kelsey\\Documents\\Semester5\\Programming\\Assignment1\\PianoSimulator\\PianoSimulator.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
