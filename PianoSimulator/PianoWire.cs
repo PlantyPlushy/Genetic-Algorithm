@@ -5,34 +5,34 @@ namespace PianoSimulator
 {
     public class PianoWire : IMusicalString
     {
-        private CircularArray ca;
-        private double noteFrequency;
-        private int sampleRate;
+        private CircularArray _ca;
+        private double _noteFrequency;
+        private int _sampleRate;
         public PianoWire(double noteFreq, int sampleR)
         {
-            noteFrequency = noteFreq;
-            sampleRate = sampleR;
-            ca = new CircularArray(Convert.ToInt32(sampleR/noteFreq));
+            _noteFrequency = noteFreq;
+            _sampleRate = sampleR;
+            _ca = new CircularArray(Convert.ToInt32(sampleR/noteFreq));
         }
 
-        public double NoteFrequency => noteFrequency;
+        public double NoteFrequency => _noteFrequency;
 
-        public int NumberOfSamples => sampleRate;
+        public int NumberOfSamples => _sampleRate;
         
         public double Sample(double decay = 0.996)
         {
-            return ca.Shift(((ca[0] + ca[1]) / 2) * decay);
+            return _ca.Shift(((_ca[0] + _ca[1]) / 2) * decay);
         }
 
         public void Strike()
         {
-            double[] randomValues = new double[ca.Length];
+            double[] randomValues = new double[_ca.Length];
             Random randy = new Random();
             for (int i = 0; i < randomValues.Length; i++)
             {
                 randomValues[i] = randy.NextDouble() - 0.5;
             }
-            ca.Fill(randomValues);
+            _ca.Fill(randomValues);
         }
     }
 }
