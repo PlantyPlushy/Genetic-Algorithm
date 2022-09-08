@@ -4,7 +4,7 @@ using System;
 namespace PianoSimulationTests
 {
     [TestClass]
-    public class UnitTest1
+    public class CircularArrayTests
     {
         [TestMethod]
         public void fillTest()
