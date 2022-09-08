@@ -19,7 +19,6 @@ namespace PianoSimulator
 
         public int NumberOfSamples => sampleRate;
         
-        // To optimize into a one-liner
         public double Sample(double decay = 0.996)
         {
             return ca.Shift(((ca[0] + ca[1]) / 2) * decay);
