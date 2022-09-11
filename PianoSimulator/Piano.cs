@@ -15,6 +15,7 @@ namespace PianoSimulator
             for (int i = 0; i < keys.Length; i++)
             {
                 // double frequency = (2 * ((i - 24) - 12)) * 440; 
+                Console.WriteLine(CalculateFrequency(i));
                 _frequencyKey.Add(new PianoWire(CalculateFrequency(i), samplingRate));
             }
         }
@@ -23,21 +24,43 @@ namespace PianoSimulator
 
         public List<string> GetPianoKeys()
         {
-            throw new NotImplementedException();
+            List<string> strList = new List<string>();
+            int i = 0;
+                foreach (var k in _frequencyKey)
+                {
+                    strList.Add("Key " + _keys[i] + " is: " + k.NoteFrequency);
+                    i++;
+                }
+            return strList;
         }
 
         public double Play()
         {
-            throw new NotImplementedException();
+            double sum = 0;
+            foreach (var i in _frequencyKey)
+            {
+                sum += i.Sample();
+            }
+            return sum;
         }
 
         public void StrikeKey(char key)
         {
-            throw new NotImplementedException();
+            try
+            {
+                int indexOf = _keys.IndexOf(key);
+                _frequencyKey[indexOf].Strike();
+            }
+            catch (Exception)
+            {
+                
+            }
+            
         }
 
         private double CalculateFrequency(int index){
-            return (2 * ((index - 24) - 12)) * 440;
+            // return (2 * ((index - 24) / 12.0)) * 440;
+            return Math.Pow(2,(index - 24) / 12.0) * 440;
         }
     }
 }
