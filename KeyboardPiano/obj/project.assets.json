@@ -460,11 +460,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Kelsey\\Documents\\Semester5\\Programming\\Assignment1\\KeyboardPiano\\KeyboardPiano.csproj",
+      "projectUniqueName": "C:\\Dawson\\Semester5\\Programming\\Programming-Assignment1\\KeyboardPiano\\KeyboardPiano.csproj",
       "projectName": "KeyboardPiano",
-      "projectPath": "C:\\Users\\Kelsey\\Documents\\Semester5\\Programming\\Assignment1\\KeyboardPiano\\KeyboardPiano.csproj",
+      "projectPath": "C:\\Dawson\\Semester5\\Programming\\Programming-Assignment1\\KeyboardPiano\\KeyboardPiano.csproj",
       "packagesPath": "C:\\Users\\Kelsey\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Kelsey\\Documents\\Semester5\\Programming\\Assignment1\\KeyboardPiano\\obj\\",
+      "outputPath": "C:\\Dawson\\Semester5\\Programming\\Programming-Assignment1\\KeyboardPiano\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Kelsey\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -477,9 +477,10 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\Kelsey\\Documents\\Semester5\\Programming\\Assignment1\\PianoSimulator\\PianoSimulator.csproj": {
-              "projectPath": "C:\\Users\\Kelsey\\Documents\\Semester5\\Programming\\Assignment1\\PianoSimulator\\PianoSimulator.csproj"
+            "C:\\Dawson\\Semester5\\Programming\\Programming-Assignment1\\PianoSimulator\\PianoSimulator.csproj": {
+              "projectPath": "C:\\Dawson\\Semester5\\Programming\\Programming-Assignment1\\PianoSimulator\\PianoSimulator.csproj"
             }
           }
         }
@@ -492,6 +493,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "NAudio": {
             "target": "Package",
@@ -508,12 +510,18 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[3.1.16, 3.1.16]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.422\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
       }
     }
   }

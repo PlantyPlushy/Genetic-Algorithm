@@ -7,3 +7,12 @@ C:\Users\Kelsey\Documents\Semester5\Programming\Assignment1\PianoSimulator\obj\D
 C:\Users\Kelsey\Documents\Semester5\Programming\Assignment1\PianoSimulator\obj\Debug\netcoreapp3.1\PianoSimulator.csproj.CoreCompileInputs.cache
 C:\Users\Kelsey\Documents\Semester5\Programming\Assignment1\PianoSimulator\obj\Debug\netcoreapp3.1\PianoSimulator.dll
 C:\Users\Kelsey\Documents\Semester5\Programming\Assignment1\PianoSimulator\obj\Debug\netcoreapp3.1\PianoSimulator.pdb
+C:\Dawson\Semester5\Programming\Programming-Assignment1\PianoSimulator\bin\Debug\netcoreapp3.1\PianoSimulator.deps.json
+C:\Dawson\Semester5\Programming\Programming-Assignment1\PianoSimulator\bin\Debug\netcoreapp3.1\PianoSimulator.dll
+C:\Dawson\Semester5\Programming\Programming-Assignment1\PianoSimulator\bin\Debug\netcoreapp3.1\PianoSimulator.pdb
+C:\Dawson\Semester5\Programming\Programming-Assignment1\PianoSimulator\obj\Debug\netcoreapp3.1\PianoSimulator.csproj.AssemblyReference.cache
+C:\Dawson\Semester5\Programming\Programming-Assignment1\PianoSimulator\obj\Debug\netcoreapp3.1\PianoSimulator.AssemblyInfoInputs.cache
+C:\Dawson\Semester5\Programming\Programming-Assignment1\PianoSimulator\obj\Debug\netcoreapp3.1\PianoSimulator.AssemblyInfo.cs
+C:\Dawson\Semester5\Programming\Programming-Assignment1\PianoSimulator\obj\Debug\netcoreapp3.1\PianoSimulator.csproj.CoreCompileInputs.cache
+C:\Dawson\Semester5\Programming\Programming-Assignment1\PianoSimulator\obj\Debug\netcoreapp3.1\PianoSimulator.dll
+C:\Dawson\Semester5\Programming\Programming-Assignment1\PianoSimulator\obj\Debug\netcoreapp3.1\PianoSimulator.pdb
