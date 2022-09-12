@@ -16,6 +16,7 @@ namespace KeyboardPiano
         {
             Piano piano = new Piano("q2w3er5t6y7ui9o0p", SampleRate);
             Audio audio = new Audio(BufferSize, SampleRate);
+            //used to eliminated the delay between notes
             Stopwatch stopwatch = new Stopwatch();
  
             Console.Write(
@@ -30,9 +31,10 @@ namespace KeyboardPiano
             Console.WriteLine("Press any of the available keys above or ESC to exit");
 
             stopwatch.Start();
-
+            //Loop to keep the program running until ESC is hit
             while (true)
             {
+                //Detects if a key is hit or not
                 if (Console.KeyAvailable)
                 {
                     var key = Console.ReadKey(true);
@@ -43,10 +45,12 @@ namespace KeyboardPiano
                     char userKey = key.KeyChar;
                     piano.StrikeKey(userKey);
                 }
+                //Plays the audio 
                 for (int i = 0; i < SamplesPerLoop; i++)
                 {
                     audio.Play(piano.Play());
                 }
+                //Empty while loop to idle and keep the piano consistent
                 while (stopwatch.Elapsed.TotalMilliseconds < MillisecondsPerLoop)
                 {
                 }

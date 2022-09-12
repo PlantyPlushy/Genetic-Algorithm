@@ -3,12 +3,18 @@ using PianoSimulation;
 
 namespace PianoSimulator
 {
+    /// <summary>
+    /// Defines an array that wraps around itself
+    /// </summary>
     public class CircularArray : IRingBuffer
     {
         private double[] _array;
         // private int _length;
         private int _frontOfArr;
-
+        /// <summary>
+        /// Circular Array constructor
+        /// </summary>
+        /// <param name="size">Size of array</param>
         public CircularArray(int size)
         {
             _array = new double[size];
@@ -22,6 +28,7 @@ namespace PianoSimulator
 
         public void Fill(double[] array)
         {
+            //if this if statement is hit something is wrong
             if (array.Length != _array.Length)
             {
                 throw new IndexOutOfRangeException("Array lengths do not match");
