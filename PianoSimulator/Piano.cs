@@ -15,7 +15,6 @@ namespace PianoSimulator
             for (int i = 0; i < keys.Length; i++)
             {
                 // double frequency = (2 * ((i - 24) - 12)) * 440; 
-                Console.WriteLine(CalculateFrequency(i));
                 _frequencyKey.Add(new PianoWire(CalculateFrequency(i), samplingRate));
             }
         }

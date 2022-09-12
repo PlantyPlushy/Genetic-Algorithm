@@ -1,9 +1,0 @@
-C:\Users\Kelsey\Documents\Semester5\Programming\Assignment1\PianoSimulator\bin\Debug\netcoreapp3.1\PianoSimulator.deps.json
-C:\Users\Kelsey\Documents\Semester5\Programming\Assignment1\PianoSimulator\bin\Debug\netcoreapp3.1\PianoSimulator.dll
-C:\Users\Kelsey\Documents\Semester5\Programming\Assignment1\PianoSimulator\bin\Debug\netcoreapp3.1\PianoSimulator.pdb
-C:\Users\Kelsey\Documents\Semester5\Programming\Assignment1\PianoSimulator\obj\Debug\netcoreapp3.1\PianoSimulator.csprojAssemblyReference.cache
-C:\Users\Kelsey\Documents\Semester5\Programming\Assignment1\PianoSimulator\obj\Debug\netcoreapp3.1\PianoSimulator.AssemblyInfoInputs.cache
-C:\Users\Kelsey\Documents\Semester5\Programming\Assignment1\PianoSimulator\obj\Debug\netcoreapp3.1\PianoSimulator.AssemblyInfo.cs
-C:\Users\Kelsey\Documents\Semester5\Programming\Assignment1\PianoSimulator\obj\Debug\netcoreapp3.1\PianoSimulator.csproj.CoreCompileInputs.cache
-C:\Users\Kelsey\Documents\Semester5\Programming\Assignment1\PianoSimulator\obj\Debug\netcoreapp3.1\PianoSimulator.dll
-C:\Users\Kelsey\Documents\Semester5\Programming\Assignment1\PianoSimulator\obj\Debug\netcoreapp3.1\PianoSimulator.pdb
