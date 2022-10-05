@@ -14,7 +14,10 @@ namespace InteractivePiano
         [STAThread]
         static void Main()
         {
-            Piano piano = new Piano("q2w3er5t6y7ui9o0p", SampleRate);
+
+            using (var game = new InteractivePianoGame())
+                game.Run();
+            Piano piano = new Piano(samplingRate: SampleRate);
             Audio audio = new Audio(BufferSize, SampleRate);
             while (true)
             {
@@ -35,8 +38,6 @@ namespace InteractivePiano
                     audio.Play(piano.Play());
                 }
             }
-            using (var game = new InteractivePianoGame())
-                game.Run();
             
             
         }

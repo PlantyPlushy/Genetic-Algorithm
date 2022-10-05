@@ -64,7 +64,7 @@ namespace InteractivePiano
         /// Describes what needs to happen on garbage collection
         /// </summary>
         public void Dispose(){
-            this._instance = null;
+            _instance = null;
             this._bufferedWaveProvider = null;
             this._waveOut.Stop();
             this._waveOut = null;
