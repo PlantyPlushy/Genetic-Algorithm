@@ -1,7 +1,7 @@
 ﻿using System;
 using NAudio.Wave;
 
-namespace KeyboardPiano
+namespace InteractivePiano
 {
     /// <summary>
     /// This class is used to play a stream of doubles that represent audio samples
