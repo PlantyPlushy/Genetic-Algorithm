@@ -6,8 +6,10 @@ namespace KeyboardPiano
     /// <summary>
     /// This class is used to play a stream of doubles that represent audio samples
     /// </summary>
-    class Audio
+    sealed class Audio : IDisposable
     {
+        private static Audio _instance = null;
+        private static readonly object padlock = new object();
         private WaveOutEvent _waveOut;
         private WaveFormat _waveFormat;
         private BufferedWaveProvider _bufferedWaveProvider;
@@ -30,6 +32,42 @@ namespace KeyboardPiano
 
             _waveOut.Init(_bufferedWaveProvider);
             _waveOut.Play();
+        }
+        /// <summary>
+        /// keeps the singleton class thread safe
+        /// </summary>
+        public static Audio Instance
+        {
+            get
+            {
+                lock (padlock)
+                {
+                    if (_instance == null)
+                    {
+                        _instance = new Audio();
+                    }
+                    return _instance;
+                }
+            }
+        }
+        /// <summary>
+        /// Clears the current sound that is playing allowing
+        ///  for a new sound to be played in its place
+        /// </summary>
+        public void Reset(){
+            this._bufferCount = 0;
+            this._bufferedWaveProvider = new BufferedWaveProvider(this._waveFormat); 
+            this._bufferedWaveProvider.DiscardOnBufferOverflow = true;
+        }
+        
+        /// <summary>
+        /// Describes what needs to happen on garbage collection
+        /// </summary>
+        public void Dispose(){
+            this._instance = null;
+            this._bufferedWaveProvider = null;
+            this._waveOut.Stop();
+            this._waveOut = null;
         }
 
         /// <summary>
