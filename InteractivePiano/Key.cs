@@ -1,46 +1,48 @@
 using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace InteractivePiano
 {
-    public class Key : DrawableGameComponent
+    public class Key
     {
-        private Game _game;
-        private SpriteBatch _spriteBatch;
-        private Texture2D _whiteKeyImage;
-        private Texture2D _blackKeyImage;
-        public Key(Game game) : base(game)
+        private bool _isWhite;
+        private Texture2D _texture;
+        private Color _color;
+        private Vector2 _position;
+
+        public Key(bool isWhite, Vector2 position)
         {
-            _game = game;
+            _isWhite = isWhite;
+            _color = Color.White;
+            _position = position;
         }
         
         // When a key is pressed, change color of the key
         public void Press(){
-
+            this._color = Color.BlanchedAlmond;
+        }
+        public void UnPress(){
+            this._color = Color.White;
         }
 
-        public override void Draw(GameTime gameTime)
+        public void Draw(SpriteBatch spriteBatch)
         {
-            base.Draw(gameTime);
+            spriteBatch.Draw(_texture, _position, _color);
         }
 
-        public override void Initialize()
-        {
-            base.Initialize();
-        }
 
-        public override void Update(GameTime gameTime)
+        public void LoadContent(ContentManager manager)
         {
-            base.Update(gameTime);
-        }
+            if (_isWhite)
+            {
+            _texture = manager.Load<Texture2D>("whiteKey");
+            } else 
+            {
+            _texture = manager.Load<Texture2D>("blackKey");
 
-        protected override void LoadContent()
-        {
-            _spriteBatch = new SpriteBatch(GraphicsDevice);
-            _whiteKeyImage = _game.Content.Load<Texture2D>("whiteKey");
-            _blackKeyImage = _game.Content.Load<Texture2D>("blackKey");
-            base.LoadContent();
+            }
         }
     }
 }
