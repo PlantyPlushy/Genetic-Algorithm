@@ -38,22 +38,6 @@ namespace InteractivePiano
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // if (Console.KeyAvailable)
-            // {
-            //     var key = Console.ReadKey(true);
-            //     if (key.Key == ConsoleKey.Escape)
-            //     {
-            //         break;
-            //     } 
-            //     char userKey = key.KeyChar;
-            //     piano.StrikeKey(userKey);
-            // }
-            // //Plays the audio 
-            // for (int i = 0; i < SamplesPerLoop; i++)
-            // {
-            //     audio.Play(piano.Play());
-            // }
-
             // TODO: Add your update logic here
 
             base.Update(gameTime);
