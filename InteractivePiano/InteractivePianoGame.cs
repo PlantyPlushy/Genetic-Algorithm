@@ -9,7 +9,7 @@ namespace InteractivePiano
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        private WhiteKeySprite _whiteKey;
+        private PianoSprite _whiteKey;
 
         public InteractivePianoGame()
         {
@@ -21,7 +21,7 @@ namespace InteractivePiano
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            _whiteKey = new WhiteKeySprite(this);
+            _whiteKey = new PianoSprite(this);
             this.Components.Add(_whiteKey);
             base.Initialize();
         }

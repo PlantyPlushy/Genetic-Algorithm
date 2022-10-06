@@ -7,7 +7,7 @@ using PianoSimulator;
 
 namespace SpriteRender
 {
-    class WhiteKeySprite : DrawableGameComponent
+    class PianoSprite : DrawableGameComponent
     {
         private Game _game;
         private Piano _piano;
@@ -15,7 +15,7 @@ namespace SpriteRender
         private Texture2D _blackKeyImage;
         private SpriteBatch _spriteBatch;
 
-        public WhiteKeySprite(Game game) : base(game)
+        public PianoSprite(Game game) : base(game)
         {
             this._game = game;
         }
@@ -26,7 +26,6 @@ namespace SpriteRender
             int xPosition = 0;   
             int imageWidth = _whiteKeyImage.Width;
             string keys = _piano.Keys;
-            string sequence = "wbwwbwbwwbwb";
             for (int i = 0; i < keys.Length; i++)
             {
                 // if the current char is numeric i.e. is a black key
