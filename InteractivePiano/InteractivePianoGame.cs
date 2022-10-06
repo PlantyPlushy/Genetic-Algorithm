@@ -9,7 +9,7 @@ namespace InteractivePiano
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        private PianoSprite _whiteKey;
+        private PianoSprite _pianoSprite;
 
         public InteractivePianoGame()
         {
@@ -21,8 +21,8 @@ namespace InteractivePiano
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            _whiteKey = new PianoSprite(this);
-            this.Components.Add(_whiteKey);
+            _pianoSprite = new PianoSprite(this, "");
+            this.Components.Add(_pianoSprite);
             base.Initialize();
         }
 
@@ -37,6 +37,22 @@ namespace InteractivePiano
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+
+            // if (Console.KeyAvailable)
+            // {
+            //     var key = Console.ReadKey(true);
+            //     if (key.Key == ConsoleKey.Escape)
+            //     {
+            //         break;
+            //     } 
+            //     char userKey = key.KeyChar;
+            //     piano.StrikeKey(userKey);
+            // }
+            // //Plays the audio 
+            // for (int i = 0; i < SamplesPerLoop; i++)
+            // {
+            //     audio.Play(piano.Play());
+            // }
 
             // TODO: Add your update logic here
 

@@ -1,23 +1,23 @@
-using System;
-using System.Text.RegularExpressions;
-using InteractivePiano;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using PianoSimulator;
+using Backend;
 
 namespace SpriteRender
 {
     class PianoSprite : DrawableGameComponent
     {
         private Game _game;
+        private string _availableKeys;
         private Piano _piano;
         private Texture2D _whiteKeyImage;
         private Texture2D _blackKeyImage;
         private SpriteBatch _spriteBatch;
 
-        public PianoSprite(Game game) : base(game)
+        public PianoSprite(Game game, string availableKeys) : base(game)
         {
             this._game = game;
+            _availableKeys = availableKeys;
         }
 
         public override void Draw(GameTime gameTime)
@@ -25,15 +25,16 @@ namespace SpriteRender
             _spriteBatch.Begin(sortMode: SpriteSortMode.Texture);
             int xPosition = 0;   
             int imageWidth = _whiteKeyImage.Width;
-            string keys = _piano.Keys;
-            for (int i = 0; i < keys.Length; i++)
+            // string keys = _piano.Keys;
+            DetermineKey dk = new DetermineKey(_piano.Keys.Length);
+            for (int i = 0; i < dk.StringLength; i++)
             {
-                // if the current char is numeric i.e. is a black key
-                if (!Regex.IsMatch(keys[i].ToString(), @"^\d+$"))
+                // if the current char in the pattern is w i.e. is a white key
+                if (dk.IsWhite(i))
                 {
-                    _spriteBatch.Draw(_whiteKeyImage, new Vector2(xPosition,0), Color.White);  
-                    xPosition+= imageWidth + 5;  
+                    _spriteBatch.Draw(_whiteKeyImage, new Vector2(xPosition,0), Color.White);
                     // creates a gap for the next key to be placed on
+                    xPosition+= imageWidth + 5;  
                 } else 
                 {
                     _spriteBatch.Draw(_blackKeyImage, new Vector2((xPosition - (imageWidth / 2)) , 0), Color.White);  
@@ -47,7 +48,7 @@ namespace SpriteRender
 
         public override void Initialize()
         {
-            _piano = new Piano("q2we4r5ty7u8i9op");
+            _piano = new Piano();
             base.Initialize();
         }
 
