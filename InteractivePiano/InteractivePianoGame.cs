@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using SpriteRender;
 
 namespace InteractivePiano
 {
@@ -8,6 +9,7 @@ namespace InteractivePiano
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        private WhiteKeySprite _whiteKey;
 
         public InteractivePianoGame()
         {
@@ -19,7 +21,8 @@ namespace InteractivePiano
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            _whiteKey = new WhiteKeySprite(this);
+            this.Components.Add(_whiteKey);
             base.Initialize();
         }
 
