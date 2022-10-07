@@ -37,7 +37,7 @@ namespace InteractivePiano
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
+            _pianoSprite.Draw(gameTime);
 
             // TODO: Add your update logic here
 

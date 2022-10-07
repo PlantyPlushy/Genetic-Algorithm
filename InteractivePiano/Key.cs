@@ -44,5 +44,9 @@ namespace InteractivePiano
 
             }
         }
+        public override string ToString()
+        {
+            return $"{_color}";
+        }
     }
 }

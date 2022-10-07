@@ -50,16 +50,7 @@ namespace PianoSimulator
 
         public void StrikeKey(char key)
         {
-            try
-            {
                 int indexOf = _keys.IndexOf(key);
-                _frequencyKey[indexOf].Strike();
-            }
-            catch (Exception)
-            {
-                
-            }
-            
         }
         /// <summary>
         /// Calculates the frequency for audio wave

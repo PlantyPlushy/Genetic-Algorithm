@@ -72,23 +72,32 @@ namespace SpriteRender
             Keys[] pressedKey = Keyboard.GetState().GetPressedKeys();
             for (int i = 0; i < pressedKey.Length; i++)
             {
-                _piano.StrikeKey(pressedKey[i].ToString().ToLower()[0]);
+                try
+                {
+                    char pressedKeyChar = pressedKey[i].ToString().ToLower()[0];
+                    // Strikes the key with whatever key was pressed
+                    _piano.StrikeKey(pressedKeyChar);
+
+                    int indexOfLetter = _availableKeys.IndexOf(pressedKeyChar);
+                    _spriteBatch.Begin();
+                    _keys[indexOfLetter].Press();
+                    _keys[indexOfLetter].Draw(_spriteBatch);
+                    _spriteBatch.End();
+
+                    Draw(gameTime);
+                    
+                }
+                catch (System.Exception)
+                {
+                    System.Console.WriteLine("Exception");
+                    // Do nothing                    
+                }
+
                 for (int a = 0; a < 44100*gameTime.ElapsedGameTime.TotalSeconds; a++)
                 {
                     Audio.Instance.Play(_piano.Play());
                 }
-                    // System.Console.WriteLine(pressedKey[i].ToString());
             }
-            if(Keyboard.GetState().IsKeyDown(Keys.Q))
-            {
-                _piano.StrikeKey('q');
-            }
-            for (int i = 0; i < 44100*gameTime.ElapsedGameTime.TotalSeconds; i++)
-            {
-                Audio.Instance.Play(_piano.Play());
-            }
-            // char userKey = key.KeyChar;
-            // _piano.StrikeKey(userKey);
             base.Update(gameTime);
         }
 
