@@ -16,6 +16,7 @@ namespace KeyboardPiano
         {
             Piano piano = new Piano("q2w3er5t6y7ui9o0p", SampleRate);
             Audio audio = new Audio(BufferSize, SampleRate);
+
             //used to eliminated the delay between notes
             Stopwatch stopwatch = new Stopwatch();
  
@@ -42,8 +43,7 @@ namespace KeyboardPiano
                     {
                         break;
                     } 
-                    char userKey = key.KeyChar;
-                    piano.StrikeKey(userKey);
+                    
                 }
                 //Plays the audio 
                 for (int i = 0; i < SamplesPerLoop; i++)

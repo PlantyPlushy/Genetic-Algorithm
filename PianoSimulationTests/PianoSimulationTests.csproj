@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PianoSimulator\PianoSimulator.csproj" />
+    <ProjectReference Include="..\Backend\Backend.csproj" />
   </ItemGroup>
 
 </Project>
