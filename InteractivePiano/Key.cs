@@ -21,7 +21,7 @@ namespace InteractivePiano
         
         // When a key is pressed, change color of the key
         public void Press(){
-            this._color = Color.BlanchedAlmond;
+            this._color = Color.Red;
         }
         public void UnPress(){
             this._color = Color.White;
@@ -43,6 +43,10 @@ namespace InteractivePiano
             _texture = manager.Load<Texture2D>("blackKey");
 
             }
+        }
+        public override string ToString()
+        {
+            return $"{_color}";
         }
     }
 }
