@@ -84,10 +84,6 @@ namespace SpriteRender
 	
 	                _keys[indexOfLetter].Press();
 	
-	                for (int a = 0; a < 44100*gameTime.ElapsedGameTime.TotalSeconds; a++)
-	                {
-	                    Audio.Instance.Play(_piano.Play());
-	                }    
                 }
                 catch (System.Exception)
                 {
@@ -99,42 +95,22 @@ namespace SpriteRender
             {
                 char releasedKeyChar = released.ToString().ToLower()[0];
                 int indexOfLetter = _availableKeys.IndexOf(releasedKeyChar);
-            try
-            {
-            _keys[indexOfLetter].UnPress();
+                try
+                {
+                _keys[indexOfLetter].UnPress();
+                }
+                catch (System.Exception)
+                {
+                    // Do nothing
+                }
             }
-            catch (System.Exception)
-            {
-                // Do nothing
-            }
-            } 
             beforeKeys = currentKeys;
+
+            for (int a = 0; a < 44100*gameTime.ElapsedGameTime.TotalSeconds; a++)
+            {
+                Audio.Instance.Play(_piano.Play());
+            }    
             base.Update(gameTime);
-            // for (int i = 0; i < pressedKey.Length; i++)
-            // {
-            //     char pressedKeyChar = pressedKey[i].ToString().ToLower()[0];
-            //     int indexOfLetter = _availableKeys.IndexOf(pressedKeyChar);
-
-            //     try
-            //     {
-            //         // Strikes the key with whatever key was pressed
-            //         _piano.StrikeKey(pressedKeyChar);
-
-            //         _keys[indexOfLetter].Press();
-
-            //         for (int a = 0; a < 44100*gameTime.ElapsedGameTime.TotalSeconds; a++)
-            //         {
-            //             Audio.Instance.Play(_piano.Play());
-            //         }       
-
-            //         _keys[indexOfLetter].UnPress();
-
-            //     }
-            //     catch (System.Exception)
-            //     {
-            //         // Do nothing if the key is invalid
-            //     }
-            // }
         }
 
         protected override void LoadContent()
