@@ -43,8 +43,7 @@ namespace KeyboardPiano
                     {
                         break;
                     } 
-                    char userKey = key.KeyChar;
-                    piano.StrikeKey(userKey);
+                    
                 }
                 //Plays the audio 
                 for (int i = 0; i < SamplesPerLoop; i++)

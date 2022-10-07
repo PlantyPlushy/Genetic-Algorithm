@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using PianoSimulator;
 using Backend;
 using InteractivePiano;
+using Microsoft.Xna.Framework.Input;
 
 namespace SpriteRender
 {
@@ -37,7 +38,13 @@ namespace SpriteRender
         public override void Initialize()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            _piano = new Piano();
+            if (_availableKeys == "")
+            {
+                _piano = new Piano();
+            } else {
+                _piano = new Piano(_availableKeys);
+                _availableKeys = _piano.Keys;
+            }
 
             _keys = new Key[_piano.Keys.Length];
             int xPosition = 0;   
@@ -61,6 +68,27 @@ namespace SpriteRender
 
         public override void Update(GameTime gameTime)
         {
+              
+            Keys[] pressedKey = Keyboard.GetState().GetPressedKeys();
+            for (int i = 0; i < pressedKey.Length; i++)
+            {
+                _piano.StrikeKey(pressedKey[i].ToString().ToLower()[0]);
+                for (int a = 0; a < 44100*gameTime.ElapsedGameTime.TotalSeconds; a++)
+                {
+                    Audio.Instance.Play(_piano.Play());
+                }
+                    // System.Console.WriteLine(pressedKey[i].ToString());
+            }
+            if(Keyboard.GetState().IsKeyDown(Keys.Q))
+            {
+                _piano.StrikeKey('q');
+            }
+            for (int i = 0; i < 44100*gameTime.ElapsedGameTime.TotalSeconds; i++)
+            {
+                Audio.Instance.Play(_piano.Play());
+            }
+            // char userKey = key.KeyChar;
+            // _piano.StrikeKey(userKey);
             base.Update(gameTime);
         }
 

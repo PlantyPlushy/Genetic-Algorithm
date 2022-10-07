@@ -38,6 +38,7 @@ namespace InteractivePiano
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+
             // TODO: Add your update logic here
 
             base.Update(gameTime);

@@ -12,7 +12,8 @@
             "program": "${workspaceFolder}/InteractivePiano/bin/Debug/netcoreapp3.1/InteractivePiano.dll",
             "args": [],
             "cwd": "${workspaceFolder}/InteractivePiano",
-            "console": "internalConsole",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
             "stopAtEntry": false
         },
         {
