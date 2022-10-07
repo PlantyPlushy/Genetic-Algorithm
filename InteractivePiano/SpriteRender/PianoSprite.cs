@@ -4,6 +4,7 @@ using PianoSimulator;
 using Backend;
 using InteractivePiano;
 using Microsoft.Xna.Framework.Input;
+using System.Linq;
 
 namespace SpriteRender
 {
@@ -14,17 +15,26 @@ namespace SpriteRender
         private Key[] _keys;
         private Piano _piano;
         private SpriteBatch _spriteBatch;
+        private Keys[] beforeKeys;
 
         public PianoSprite(Game game, string availableKeys) : base(game)
         {
             this._game = game;
-            _availableKeys = availableKeys;
+            if (availableKeys == "")
+            {
+                _piano = new Piano();
+                _availableKeys = _piano.Keys;
+            } else {
+                _piano = new Piano(_availableKeys);
+                _availableKeys = availableKeys;
+            }
+            beforeKeys = new Keys[0];
         }
 
         public override void Draw(GameTime gameTime)
         {
             _spriteBatch.Begin(sortMode: SpriteSortMode.Texture);
-
+            
             foreach (Key key in _keys)
             {
                 key.Draw(_spriteBatch);
@@ -38,13 +48,6 @@ namespace SpriteRender
         public override void Initialize()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            if (_availableKeys == "")
-            {
-                _piano = new Piano();
-            } else {
-                _piano = new Piano(_availableKeys);
-                _availableKeys = _piano.Keys;
-            }
 
             _keys = new Key[_piano.Keys.Length];
             int xPosition = 0;   
@@ -68,37 +71,70 @@ namespace SpriteRender
 
         public override void Update(GameTime gameTime)
         {
-              
-            Keys[] pressedKey = Keyboard.GetState().GetPressedKeys();
-            for (int i = 0; i < pressedKey.Length; i++)
+            Keys[] currentKeys = Keyboard.GetState().GetPressedKeys();
+
+            foreach (var pressed in currentKeys.Except(beforeKeys))
             {
+                char pressedKeyChar = pressed.ToString().ToLower()[0];
+                int indexOfLetter = _availableKeys.IndexOf(pressedKeyChar);
+                System.Console.WriteLine(pressed);
                 try
                 {
-                    char pressedKeyChar = pressedKey[i].ToString().ToLower()[0];
-                    // Strikes the key with whatever key was pressed
                     _piano.StrikeKey(pressedKeyChar);
-
-                    int indexOfLetter = _availableKeys.IndexOf(pressedKeyChar);
-                    _spriteBatch.Begin();
-                    _keys[indexOfLetter].Press();
-                    _keys[indexOfLetter].Draw(_spriteBatch);
-                    _spriteBatch.End();
-
-                    Draw(gameTime);
-                    
+	
+	                _keys[indexOfLetter].Press();
+	
+	                for (int a = 0; a < 44100*gameTime.ElapsedGameTime.TotalSeconds; a++)
+	                {
+	                    Audio.Instance.Play(_piano.Play());
+	                }    
                 }
                 catch (System.Exception)
                 {
-                    System.Console.WriteLine("Exception");
-                    // Do nothing                    
-                }
-
-                for (int a = 0; a < 44100*gameTime.ElapsedGameTime.TotalSeconds; a++)
-                {
-                    Audio.Instance.Play(_piano.Play());
+                    // Do nothing
                 }
             }
+
+            foreach (var released in beforeKeys.Except(currentKeys))
+            {
+                char releasedKeyChar = released.ToString().ToLower()[0];
+                int indexOfLetter = _availableKeys.IndexOf(releasedKeyChar);
+            try
+            {
+            _keys[indexOfLetter].UnPress();
+            }
+            catch (System.Exception)
+            {
+                // Do nothing
+            }
+            } 
+            beforeKeys = currentKeys;
             base.Update(gameTime);
+            // for (int i = 0; i < pressedKey.Length; i++)
+            // {
+            //     char pressedKeyChar = pressedKey[i].ToString().ToLower()[0];
+            //     int indexOfLetter = _availableKeys.IndexOf(pressedKeyChar);
+
+            //     try
+            //     {
+            //         // Strikes the key with whatever key was pressed
+            //         _piano.StrikeKey(pressedKeyChar);
+
+            //         _keys[indexOfLetter].Press();
+
+            //         for (int a = 0; a < 44100*gameTime.ElapsedGameTime.TotalSeconds; a++)
+            //         {
+            //             Audio.Instance.Play(_piano.Play());
+            //         }       
+
+            //         _keys[indexOfLetter].UnPress();
+
+            //     }
+            //     catch (System.Exception)
+            //     {
+            //         // Do nothing if the key is invalid
+            //     }
+            // }
         }
 
         protected override void LoadContent()
