@@ -22,7 +22,10 @@ namespace PianoSimulator
             _frontOfArr = 0;
         }
 
-        public double this[int index] => _array[(_frontOfArr + index) % _array.Length];
+        public double this[int index] {
+            get => _array[(_frontOfArr + index) % _array.Length];
+            private set => _array[(_frontOfArr + index) % _array.Length] = value;
+            }
 
         public int Length => _array.Length;
 
@@ -42,9 +45,9 @@ namespace PianoSimulator
 
         public double Shift(double value)
         {
-            double removed = _array[_frontOfArr];
-            _array[_frontOfArr] = value;
-            if (_frontOfArr == _array.Length - 1)
+            double removed = this[0];
+            this[0] = value;
+            if (_frontOfArr >= _array.Length - 1)
             {
                 _frontOfArr = 0;
             } else

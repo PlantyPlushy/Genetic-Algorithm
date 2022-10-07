@@ -5,6 +5,7 @@ using Backend;
 using InteractivePiano;
 using Microsoft.Xna.Framework.Input;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace SpriteRender
 {
@@ -106,10 +107,13 @@ namespace SpriteRender
             }
             beforeKeys = currentKeys;
 
-            for (int a = 0; a < 44100*gameTime.ElapsedGameTime.TotalSeconds; a++)
-            {
-                Audio.Instance.Play(_piano.Play());
-            }    
+            Task.Run(() => {
+                for (int a = 0; a < 44100*gameTime.ElapsedGameTime.TotalSeconds; a++)
+                {
+                    Audio.Instance.Play(_piano.Play());
+                }    
+            });
+
             base.Update(gameTime);
         }
 
