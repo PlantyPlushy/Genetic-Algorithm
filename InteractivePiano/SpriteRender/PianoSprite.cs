@@ -54,17 +54,18 @@ namespace SpriteRender
             int xPosition = 0;   
             int imageWidth = 36;
             DetermineKey dk = new DetermineKey(_piano.Keys.Length);
+            string[] noteTypeArr = dk.Pattern;
             for (int i = 0; i < _keys.Length; i++)
             {
                 // if the current char in the pattern is w i.e. is a white key
                 if (dk.IsWhite(i))
                 {
-                    _keys[i] = new Key(true,new Vector2(xPosition,0));
+                    _keys[i] = new Key(true,new Vector2(xPosition,0),noteTypeArr[i]);
                     // creates a gap for the next key to be placed on
                     xPosition+= imageWidth + 5;  
                 } else 
                 {
-                    _keys[i] = new Key(false,new Vector2((xPosition - (imageWidth / 2)) , 0));
+                    _keys[i] = new Key(false,new Vector2((xPosition - (imageWidth / 2)) , 0),noteTypeArr[i]);
                 }
             }
             base.Initialize();
@@ -76,7 +77,7 @@ namespace SpriteRender
 
             foreach (var pressed in currentKeys.Except(beforeKeys))
             {
-                char pressedKeyChar = pressed.ToString().ToLower()[0];
+                char pressedKeyChar = TurnToValidKey.Validate(pressed.ToString().ToLower());
                 int indexOfLetter = _availableKeys.IndexOf(pressedKeyChar);
                 System.Console.WriteLine(pressed);
                 try
@@ -94,7 +95,7 @@ namespace SpriteRender
 
             foreach (var released in beforeKeys.Except(currentKeys))
             {
-                char releasedKeyChar = released.ToString().ToLower()[0];
+                char releasedKeyChar = TurnToValidKey.Validate(released.ToString().ToLower());
                 int indexOfLetter = _availableKeys.IndexOf(releasedKeyChar);
                 try
                 {
