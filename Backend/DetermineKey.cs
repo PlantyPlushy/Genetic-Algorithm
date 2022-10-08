@@ -9,11 +9,12 @@ namespace Backend
     /// </summary>
     public class DetermineKey
     {
-        const string BasePattern = "wbwwbwbwwbwb";
-        string _pattern;
+        private readonly string[] BasePattern = new string[]{"A","A#","B","C","C#","D","D#","E","F","F#","G","G#"};
+        private string[] _pattern;
         private readonly int _stringLength;
         public DetermineKey(int stringLength){
             this._stringLength = stringLength;
+            this._pattern = new string[stringLength];
             GeneratePattern();
         }
 
@@ -23,17 +24,17 @@ namespace Backend
             // uses the base pattern and multiplies it
             for (int i = 0; i < _stringLength; i++)
             {
-                _pattern += BasePattern[i % BasePattern.Length];
+                _pattern[i] = BasePattern[i % BasePattern.Length];
             }
 
         }
 
         public bool IsWhite(int index){
-            return _pattern[index] == 'w';
+            return !(_pattern[index].Contains('#'));
         }
 
         public int StringLength => _stringLength;
 
-        public string Pattern { get => _pattern; private set => _pattern = value; }
+        public string[] Pattern { get => _pattern; private set => _pattern = value; }
     }
 }

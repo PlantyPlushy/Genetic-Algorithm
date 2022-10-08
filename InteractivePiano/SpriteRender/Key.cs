@@ -19,11 +19,12 @@ namespace SpriteRender
             private set => _note = value; 
         }
 
-        public Key(bool isWhite, Vector2 position)
+        public Key(bool isWhite, Vector2 position, string note)
         {
             _isWhite = isWhite;
             _color = Color.White;
             _position = position;
+            _note = note;
         }
         
         // When a key is pressed, change color of the key
@@ -50,10 +51,6 @@ namespace SpriteRender
             _texture = manager.Load<Texture2D>("blackKey");
 
             }
-        }
-        public override string ToString()
-        {
-            return $"{_color}";
         }
     }
 }
