@@ -8,9 +8,16 @@ namespace SpriteRender
     public class Key
     {
         private bool _isWhite;
+        private string _note;
         private Texture2D _texture;
         private Color _color;
         private Vector2 _position;
+
+        public string Note 
+        { 
+            get => _note; 
+            private set => _note = value; 
+        }
 
         public Key(bool isWhite, Vector2 position)
         {
