@@ -5,6 +5,9 @@ using SpriteRender;
 
 namespace InteractivePiano
 {
+    /// <summary>
+    /// The game itself
+    /// </summary>
     public class  InteractivePianoGame : Game
     {
         private GraphicsDeviceManager _graphics;

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Backend
+﻿namespace Backend
 {
     /// <summary>
     /// This is used to determine the pattern of keys 
@@ -17,7 +15,9 @@ namespace Backend
             this._pattern = new string[stringLength];
             GeneratePattern();
         }
-
+        /// <summary>
+        /// makes a valid pattern based on the length of available keys and makes notes for them
+        /// </summary>
         private void GeneratePattern(){
             int maxFit = _stringLength / BasePattern.Length;
             int remainder = _stringLength % BasePattern.Length;
@@ -28,7 +28,11 @@ namespace Backend
             }
 
         }
-
+        /// <summary>
+        /// if a note contains # its white
+        /// </summary>
+        /// <param name="index">index of current note</param>
+        /// <returns></returns>
         public bool IsWhite(int index){
             return !(_pattern[index].Contains('#'));
         }

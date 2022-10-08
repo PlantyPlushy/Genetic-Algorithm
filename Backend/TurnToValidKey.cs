@@ -1,7 +1,15 @@
 namespace Backend
 {
-    public static class TurnToValidKey
+    /// <summary>
+    /// Helps with validation for the weird key names monogame uses
+    /// </summary>
+        public static class TurnToValidKey
     {
+        /// <summary>
+        /// Returns the char value of a keyboard key name
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static char Validate(string value)
         {
             if (value.Length == 1)

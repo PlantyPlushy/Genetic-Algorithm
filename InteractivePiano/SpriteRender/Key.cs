@@ -5,6 +5,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpriteRender
 {
+    /// <summary>
+    /// Holds the information for creating a single key sprite
+    /// </summary>
     public class Key
     {
         private bool _isWhite;
@@ -30,16 +33,24 @@ namespace SpriteRender
             _isPressed = false;
         }
         
-        // When a key is pressed, change color of the key
+        /// <summary>
+        /// When a key is pressed, change color of the key
+        /// </summary>
         public void Press(){
             this._color = Color.Red;
             this._isPressed = true;
         }
+        /// <summary>
+        /// When a key is released, change color of the key
+        /// </summary>
         public void UnPress(){
             this._color = Color.White;
             this._isPressed = false;
         }
-
+        /// <summary>
+        /// Draws the key and draws the Note name only if the key is pressed
+        /// </summary>
+        /// <param name="spriteBatch"></param>
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(_texture, _position, _color);
@@ -49,7 +60,10 @@ namespace SpriteRender
             }
         }
 
-
+        /// <summary>
+        /// Preloads the textures and spritefont
+        /// </summary>
+        /// <param name="manager"></param>
         public void LoadContent(ContentManager manager)
         {
             if (_isWhite)

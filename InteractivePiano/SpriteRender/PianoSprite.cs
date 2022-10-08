@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace SpriteRender
 {
+    /// <summary>
+    /// Draws the full piano
+    /// </summary>
     class PianoSprite : DrawableGameComponent
     {
         private Game _game;
