@@ -80,11 +80,10 @@ namespace SpriteRender
 
             foreach (var pressed in currentKeys.Except(beforeKeys))
             {
-                char pressedKeyChar = TurnToValidKey.Validate(pressed.ToString().ToLower());
-                int indexOfLetter = _availableKeys.IndexOf(pressedKeyChar);
-                System.Console.WriteLine(pressed);
                 try
                 {
+                    char pressedKeyChar = TurnToValidKey.Validate(pressed.ToString().ToLower());
+                    int indexOfLetter = _availableKeys.IndexOf(pressedKeyChar);
                     _piano.StrikeKey(pressedKeyChar);
 	
 	                _keys[indexOfLetter].Press();
@@ -98,11 +97,12 @@ namespace SpriteRender
 
             foreach (var released in beforeKeys.Except(currentKeys))
             {
-                char releasedKeyChar = TurnToValidKey.Validate(released.ToString().ToLower());
-                int indexOfLetter = _availableKeys.IndexOf(releasedKeyChar);
+
                 try
                 {
-                _keys[indexOfLetter].UnPress();
+                    char releasedKeyChar = TurnToValidKey.Validate(released.ToString().ToLower());
+                    int indexOfLetter = _availableKeys.IndexOf(releasedKeyChar);
+                    _keys[indexOfLetter].UnPress();
                 }
                 catch (System.Exception)
                 {
@@ -110,13 +110,14 @@ namespace SpriteRender
                 }
             }
             beforeKeys = currentKeys;
-
             Task.Run(() => {
                 for (int a = 0; a < 44100*gameTime.ElapsedGameTime.TotalSeconds; a++)
                 {
                     Audio.Instance.Play(_piano.Play());
-                }    
+                }
+                   
             });
+            
 
             base.Update(gameTime);
         }
