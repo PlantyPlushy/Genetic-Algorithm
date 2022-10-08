@@ -1,7 +1,4 @@
 ﻿using System;
-using InteractivePiano;
-using Microsoft.Xna.Framework.Graphics;
-using  PianoSimulator;
 
 namespace InteractivePiano
 {

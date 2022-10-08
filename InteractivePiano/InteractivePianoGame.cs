@@ -14,6 +14,7 @@ namespace InteractivePiano
         public InteractivePianoGame()
         {
             _graphics = new GraphicsDeviceManager(this);
+
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
         }
@@ -23,6 +24,9 @@ namespace InteractivePiano
             // TODO: Add your initialization logic here
             _pianoSprite = new PianoSprite(this, "");
             this.Components.Add(_pianoSprite);
+            _graphics.PreferredBackBufferWidth = 1000;  
+            _graphics.PreferredBackBufferHeight = 500;   
+            _graphics.ApplyChanges();
             base.Initialize();
         }
 
